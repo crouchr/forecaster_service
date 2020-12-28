@@ -152,6 +152,7 @@ def get_forecast_text(pressure, trend_str, wind_deg):
     return forecaster_text
 
 
+# FIXME : move this to metfuncs.windrose
 def wind_deg_to_wind_quadrant(wind_deg):
     """
     Convert wind degree to windrose
