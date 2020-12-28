@@ -1,11 +1,13 @@
-# microservice for various meterological forecasting functions
+# microservice for various meteorological forecasting functions
 
 from flask import Flask, jsonify, request
+
 import zambretti_method
 import hughes38_method
 
 app = Flask(__name__)
 version = '1.0.0'
+
 
 # fixme : this does not give info about the actual exception
 @app.errorhandler(500)
@@ -77,5 +79,6 @@ def get_hughes38_forecast_api():
         response = jsonify(answer, 500)
         return response
 
-if __name__== '__main__':
+
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9501)
