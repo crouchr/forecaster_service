@@ -1,6 +1,6 @@
-import requests
-import json
-import call_rest_api
+
+import windrose     # contained in metfuncs package
+
 
 def _(msg): return msg
 
@@ -40,30 +40,32 @@ def convert_code_to_text(letter):
 # Hard-code to Northern Hemisphere
 # wind is wind_dir
 # test against http://www.beteljuice.co.uk/zambretti/forecast.html
+# Note : this does NOT forecast snow !
 def get_forecast_text(pressure, month_id, wind_deg, trend):
     """
     Simple implementation of Zambretti forecaster algorithm.
     Inspired by beteljuice.com Java algorithm, as converted to Python by
     honeysucklecottage.me.uk, and further information
     from http://www.meteormetrics.com/zambretti.htm
+    This is the forecasting method used in CumulusMX
 
-    :param pressure:
-    :param month:
+    :param pressure: Pressure (millibar)
+    :param month: (i.e. Summer or not)
     :param wind_deg: degrees
     :param trend:
     :return:
     """
 
-    north = True        # Northern Hemisphere
+    north = True            # Northern Hemisphere
     baro_top = 1050.0
     baro_bottom = 950.0
 
-    # Rest call to met_funcs microservice
-    query = {'wind_deg': wind_deg}
-    response_dict = call_rest_api.call_rest_api('http://127.0.0.1:9500/wind_deg_to_wind_rose', query)
-    if response_dict is None:
-        return None
-    wind = response_dict['wind_rose_id']
+    wind,_ = windrose.get_wind_rose(wind_deg)
+
+    # call_rest_api.call_rest_api('http://127.0.0.1:9500/wind_deg_to_wind_rose', query)
+    # if response_dict is None:
+    #     return None
+    # wind = response_dict['wind_rose_id']
 
     # normalise pressure
     pressure = 950.0 + ((1050.0 - 950.0) *
