@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "29318f1f2b1e7fbc8e849d8550346e5c466e9130c0999647b5110635ce2aa307"
+            "sha256": "8799bcf1783c14fbefef4061c3bef05e08f0341534f07bb0cb9b831cbb6aa1e7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,7 @@
             },
             {
                 "name": "ermin",
-                "url": "http://192.168.1.102",
+                "url": "http://192.168.1.102/python-packages",
                 "verify_ssl": false
             }
         ]
@@ -140,11 +140,11 @@
         },
         "metfuncs": {
             "hashes": [
-                "sha256:2597f943d93e373f3c5a3fe7696fb3f83220a78e6cb593fc4b98cdaad527b894",
-                "sha256:aa52630a3cbd5f2285cbbe3b771e2b998194fbd0d2684036bf9b5683105509ff"
+                "sha256:317de8304d7defc1b604a936bb6d701da9e682a37fae1ac7848799669b6147e0",
+                "sha256:3a138d918178846ffb5e1fb721f023dd93f89b942a4f385f73a5a08bdbf5a350"
             ],
             "index": "ermin",
-            "version": "==1.0.5"
+            "version": "==1.0.6"
         },
         "packaging": {
             "hashes": [

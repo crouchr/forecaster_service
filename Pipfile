@@ -5,12 +5,12 @@ name = "pypi"
 
 # My Python package repo on web.ermin
 [[source]]
-url = "http://192.168.1.102"
+url = "http://192.168.1.102/python-packages"
 verify_ssl = false
 name = "ermin"
 
 [packages]
-metfuncs = {version="1.0.5", index="ermin"}
+metfuncs = {version="1.0.6", index="ermin"}
 requests = "==2.25.1"
 Flask = "==1.1.2"
 pytest = "==6.2.1"
