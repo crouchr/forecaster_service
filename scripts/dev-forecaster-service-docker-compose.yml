@@ -7,7 +7,7 @@
 version: '3'
 
 services:
-  actuald:
-    image: registry:5000/forecaster_service:latest
+  forecaster-service:
+    image: registry:5000/forecaster-service:latest
     environment:
       STAGE: DEV
