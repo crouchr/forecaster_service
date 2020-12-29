@@ -1,0 +1,1 @@
+The microservice needs to be running before these test can be run

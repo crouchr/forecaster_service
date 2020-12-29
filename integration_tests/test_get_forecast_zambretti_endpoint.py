@@ -1,9 +1,8 @@
-from webtest import TestApp
-from forecaster_service import app
+
 import pytest
 
 import definitions
-
+import call_rest_api
 
 @pytest.mark.parametrize(
     "pressure, month_id, wind_deg, trend, expected_text",
@@ -27,10 +26,7 @@ def test_get_forecast_zambretti(pressure, month_id, wind_deg, trend, expected_te
     query['wind_deg'] = wind_deg
     query['trend'] = trend
 
-    browser = TestApp(app)
-    response = browser.get(definitions.endpoint_base + '/get_forecast_zambretti', params=query)
-    response_dict = response.json
-    status_code = response.status_code
+    status_code, response_dict = call_rest_api.call_rest_api(definitions.endpoint_base + '/get_forecast_zambretti', query)
 
     assert status_code == 200
     assert response_dict['forecast_text_english'] == expected_text
