@@ -5,7 +5,7 @@ LABEL description="Weather Forecast microservice"
 # Install Python dependencies
 RUN pip3 install pipenv
 COPY Pipfile* ./
-RUN pipenv install
+RUN pipenv install --system --deploy
 
 # Copy application and files
 RUN mkdir /app
