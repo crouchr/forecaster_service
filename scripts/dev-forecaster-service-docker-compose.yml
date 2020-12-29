@@ -11,3 +11,5 @@ services:
     image: registry:5000/forecaster-service:latest
     environment:
       STAGE: DEV
+    ports:
+      - "9501:9501"
