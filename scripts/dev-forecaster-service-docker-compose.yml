@@ -1,0 +1,13 @@
+# This runs on the Docker Host
+# add to rc.local:
+# docker-compose -d -f /etc/docker-compose.yml up
+# This is for the development environment on xw6600
+# Container version is 'latest'
+
+version: '3'
+
+services:
+  actuald:
+    image: registry:5000/forecaster_service:latest
+    environment:
+      STAGE: DEV
