@@ -47,7 +47,7 @@ def get_zambretti_forecast_api():
               ', trend=' + trend.__str__())
 
         forecast_text = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
-        print('forecast_text=' + forecast_text)
+        print('get_forecast_zambretti() : forecast_text=' + forecast_text)
 
         # Create response
         answer['forecast_text_english'] = forecast_text
@@ -72,9 +72,14 @@ def get_hughes38_forecast_api():
 
         pressure = int(request.args.get('pressure', None))
         wind_deg = int(request.args.get('wind_deg', None))
-        trend_str = int(request.args.get('trend_str', None))
+        trend_str = request.args.get('trend_str', None)
 
-        forecast_text = hughes38_method.get_forecast_text(pressure, wind_deg, trend_str)
+        print('get_forecast_hughes38() : pressure=' + pressure.__str__() +
+              ', wind_deg=' + wind_deg.__str__() +
+              ', trend_str=' + trend_str.__str__())
+
+        forecast_text = hughes38_method.get_forecast_text(pressure, trend_str, wind_deg)
+        print('get_forecast_hughes38() : forecast_text=' + forecast_text)
 
         # Create response
         answer['forecast_text_english'] = forecast_text

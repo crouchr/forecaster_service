@@ -4,6 +4,7 @@ import pytest
 import definitions
 import call_rest_api
 
+
 @pytest.mark.parametrize(
     "pressure, month_id, wind_deg, trend, expected_text",
     [
