@@ -1,0 +1,16 @@
+---
+- hosts: docker-prd
+  become: yes
+
+  tasks:
+    - name: Copy docker-compose to server
+      template: src=docker-compose.yml dest=/etc/forecaster-service-docker-compose.yml owner=root group=root
+
+    - name: Pull latest version of container
+      shell: "version={{ lookup('env', 'version') }} stage={{ lookup('env', 'stage') }} /usr/bin/docker-compose -f /etc/forecaster-service-docker-compose.yml pull"
+
+    - name: Stop existing container
+      shell: "docker stop forecaster-service"
+
+    #- name: Start up the new container
+    #  shell: "version={{ lookup('env', 'version') }} stage={{ lookup('env', 'stage') }}  /usr/bin/docker-compose -f /etc/forecaster-service-docker-compose.yml up &"

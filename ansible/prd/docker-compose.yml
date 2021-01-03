@@ -8,10 +8,10 @@ version: '3'
 
 services:
   forecaster-service:
-    image: registry:5000/forecaster-service:latest
+    image: registry:5000/forecaster-service:$version
     logging:
       driver: syslog
     environment:
-      STAGE: DEV
+      STAGE: $stage
     ports:
       - "9501:9501"
