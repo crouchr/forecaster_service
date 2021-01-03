@@ -12,5 +12,5 @@
     - name: Stop existing container
       shell: "docker stop forecaster-service"
 
-    #- name: Start up the new container
-    #  shell: "version={{ lookup('env', 'version') }} stage={{ lookup('env', 'stage') }}  /usr/bin/docker-compose -f /etc/forecaster-service-docker-compose.yml up &"
+    - name: Start up the new container
+      shell: "version={{ lookup('env', 'version') }} stage={{ lookup('env', 'stage') }}  /usr/bin/docker-compose -f /etc/forecaster-service-docker-compose.yml up &"
