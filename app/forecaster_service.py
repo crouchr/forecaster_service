@@ -14,7 +14,9 @@ version = '1.0.0'
 def error_handling(error):
     answer = {}
     answer['error'] = str(error)
+    print('get_zambretti_forecast_api() : error : ' + error.__str__())
     response = jsonify(answer, 500)
+
     return response
 
 
@@ -24,7 +26,7 @@ def status():
     answer = {}
     answer['status'] = 'OK'
     answer['version'] = version
-
+    print('status() : version=' + version)
     response = jsonify(answer)
 
     return response
@@ -40,18 +42,27 @@ def get_zambretti_forecast_api():
         wind_deg = int(request.args.get('wind_deg', None))
         trend = int(request.args.get('trend', None))
 
+        print('get_forecast_zambretti() : pressure=' + pressure.__str__() +
+              ', month_id=' + month_id.__str__() +
+              ', wind_deg=' + wind_deg.__str__() +
+              ', trend=' + trend.__str__())
+
         forecast_text = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
+        print('forecast_text=' + forecast_text)
 
         # Create response
         answer['forecast_text_english'] = forecast_text
 
         response = jsonify(answer)
+
         return response
 
     except Exception as e:
         answer['function'] = 'get_zambretti_forecast_api()'
         answer['error'] = str(e)
+        print('get_zambretti_forecast_api() : error : ' + e.__str__())
         response = jsonify(answer, 500)
+
         return response
 
 
@@ -76,9 +87,12 @@ def get_hughes38_forecast_api():
     except Exception as e:
         answer['function'] = 'get_hughes38_forecast_api()'
         answer['error'] = str(e)
+        print('get_hughes38_forecast_api() : error : ' + e.__str__())
         response = jsonify(answer, 500)
+
         return response
 
 
 if __name__ == '__main__':
+    print('forecaster_service started')
     app.run(host='0.0.0.0', port=9501)
