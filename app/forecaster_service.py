@@ -4,10 +4,9 @@ from flask import Flask, jsonify, request
 
 import zambretti_method
 import hughes38_method
+import forecaster_service_funcs
 
 app = Flask(__name__)
-version = '1.0.0'
-
 
 # fixme : this does not give info about the actual exception
 @app.errorhandler(500)
@@ -94,5 +93,7 @@ def get_hughes38_forecast_api():
 
 
 if __name__ == '__main__':
-    print('forecaster_service started')
+    version = forecaster_service_funcs.get_version()  # container version
+    print('forecaster_service started, version=' + version)
+
     app.run(host='0.0.0.0', port=9501)
