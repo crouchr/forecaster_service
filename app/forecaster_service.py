@@ -101,4 +101,5 @@ if __name__ == '__main__':
     version = forecaster_service_funcs.get_version()  # container version
     print('forecaster_service started, version=' + version)
 
-    app.run(host='0.0.0.0', port=9501)
+    #app.run(host='0.0.0.0', port=9501)
+    app.run(port=9501)
