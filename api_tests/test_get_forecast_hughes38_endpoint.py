@@ -30,4 +30,4 @@ def test_get_forecast_hughes38(pressure, trend_str, wind_deg, expected_text):
     status_code = response.status_code
 
     assert status_code == 200
-    assert response_dict['forecast_text_english'] == expected_text
+    assert response_dict['forecast_text'] == expected_text

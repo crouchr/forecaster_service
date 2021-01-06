@@ -1,5 +1,5 @@
 # microservice for various meteorological forecasting functions
-
+import os
 from flask import Flask, jsonify, request
 
 import zambretti_method
@@ -46,11 +46,13 @@ def get_zambretti_forecast_api():
               ', wind_deg=' + wind_deg.__str__() +
               ', trend=' + trend.__str__())
 
-        forecast_text = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
+        forecast_text, forecast_id = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
         print('get_forecast_zambretti() : forecast_text=' + forecast_text)
 
         # Create response
-        answer['forecast_text_english'] = forecast_text
+        answer['forecast_id'] = forecast_id
+        answer['forecast_lang'] = "EN"
+        answer['forecast_text'] = forecast_text
 
         response = jsonify(answer)
 
@@ -78,11 +80,13 @@ def get_hughes38_forecast_api():
               ', wind_deg=' + wind_deg.__str__() +
               ', trend_str=' + trend_str.__str__())
 
-        forecast_text = hughes38_method.get_forecast_text(pressure, trend_str, wind_deg)
-        print('get_forecast_hughes38() : forecast_text=' + forecast_text)
+        forecast_text, forecast_id = hughes38_method.get_forecast_text(pressure, trend_str, wind_deg)
+        print('get_forecast_hughes38() : forecast_text=' + forecast_text + ", forecast_id=" + forecast_id)
 
         # Create response
-        answer['forecast_text_english'] = forecast_text
+        answer['forecast_id'] = forecast_id     # language independent
+        answer['forecast_lang'] = 'EN'
+        answer['forecast_text'] = forecast_text
 
         response = jsonify(answer)
 
@@ -98,6 +102,7 @@ def get_hughes38_forecast_api():
 
 
 if __name__ == '__main__':
+    os.environ['PYTHONUNBUFFERED'] = "1"  # does this help with log buffering ?
     version = forecaster_service_funcs.get_version()  # container version
     print('forecaster_service started, version=' + version)
 

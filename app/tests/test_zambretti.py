@@ -41,6 +41,6 @@ def test_get_forecast_text(pressure, month_id, wind_deg, trend, expected_text):
     :param expected_text:
     :return:
     """
-    zambretti_text = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
+    zambretti_text, zambretti_id = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
 
     assert zambretti_text == expected_text

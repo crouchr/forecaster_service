@@ -149,7 +149,7 @@ def get_forecast_text(pressure, trend_str, wind_deg):
     except Exception as e:
         print(e)
 
-    return forecaster_text
+    return forecaster_text, forecaster_id
 
 
 # FIXME : move this to metfuncs.windrose

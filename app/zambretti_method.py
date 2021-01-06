@@ -101,7 +101,7 @@ def get_forecast_text(pressure, month_id, wind_deg, trend):
     F = min(max(int(F + 0.5), 0), len(LUT) - 1)
 
     forecast_text = convert_code_to_text(LUT[F])
-    return forecast_text
+    return forecast_text, LUT[F]
 
 
 

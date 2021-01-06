@@ -83,6 +83,6 @@ def test_get_forecaster_index(pressure_index, ptrend_index, wind_dir_index, expe
     ]
 )
 def test_get_forecast_text(pressure_str, trend_str, wind_deg, expected):
-    forecaster_text = hughes38_method.get_forecast_text(pressure_str, trend_str, wind_deg)
+    forecaster_text, forecaster_id = hughes38_method.get_forecast_text(pressure_str, trend_str, wind_deg)
 
     assert forecaster_text == expected

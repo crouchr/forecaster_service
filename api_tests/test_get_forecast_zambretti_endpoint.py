@@ -33,4 +33,4 @@ def test_get_forecast_zambretti(pressure, month_id, wind_deg, trend, expected_te
     status_code = response.status_code
 
     assert status_code == 200
-    assert response_dict['forecast_text_english'] == expected_text
+    assert response_dict['forecast_text'] == expected_text

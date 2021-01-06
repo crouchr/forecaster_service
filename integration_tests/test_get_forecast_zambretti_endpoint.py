@@ -30,4 +30,4 @@ def test_get_forecast_zambretti(pressure, month_id, wind_deg, trend, expected_te
     status_code, response_dict = call_rest_api.call_rest_api(definitions.endpoint_base + '/get_forecast_zambretti', query)
 
     assert status_code == 200
-    assert response_dict['forecast_text_english'] == expected_text
+    assert response_dict['forecast_text'] == expected_text
