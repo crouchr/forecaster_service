@@ -3,6 +3,7 @@ import json
 
 
 # FIXME : add retries, authentication etc in the future
+# returning 200 even if return data is not good - this should be 500 ?
 def call_rest_api(endpoint, query):
     """
     Call REST API endpoint
@@ -14,7 +15,7 @@ def call_rest_api(endpoint, query):
 
     response = requests.get(endpoint, params=query)
     if response.status_code != 200:
-        return response.status_code, None
+        return 500, None
 
     response_dict = json.loads(response.content.decode('utf-8'))
 

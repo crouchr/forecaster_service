@@ -24,8 +24,8 @@ def error_handling(error):
 def status():
     answer = {}
     answer['status'] = 'OK'
-    answer['version'] = version
-    print('status() : version=' + version)
+    answer['version'] = forecaster_service_funcs.get_version()
+    print('status() : version=' + answer['version'])
     response = jsonify(answer)
 
     return response
@@ -47,7 +47,7 @@ def get_zambretti_forecast_api():
               ', trend=' + trend.__str__())
 
         forecast_text, forecast_id = zambretti_method.get_forecast_text(pressure, month_id, wind_deg, trend)
-        print('get_forecast_zambretti() : forecast_text=' + forecast_text)
+        print('get_forecast_zambretti() : forecast_text=' + forecast_text + ", forecast_id=" + forecast_id.__str__())
 
         # Create response
         answer['forecast_id'] = forecast_id
@@ -81,10 +81,10 @@ def get_hughes38_forecast_api():
               ', trend_str=' + trend_str.__str__())
 
         forecast_text, forecast_id = hughes38_method.get_forecast_text(pressure, trend_str, wind_deg)
-        print('get_forecast_hughes38() : forecast_text=' + forecast_text + ", forecast_id=" + forecast_id)
+        print('get_forecast_hughes38() : forecast_text=' + forecast_text + ", forecast_id=" + forecast_id.__str__())
 
         # Create response
-        answer['forecast_id'] = forecast_id     # language independent
+        answer['forecast_id'] = forecast_id    # language independent
         answer['forecast_lang'] = 'EN'
         answer['forecast_text'] = forecast_text
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # Implement the local forecast algorithm as per hughes38.com
+# FIXME : add the no wind variation
+# FIXME : move some of these functions to metfuncs
 
 forecast = []
 forecast.append('Error')
