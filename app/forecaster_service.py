@@ -8,6 +8,7 @@ import forecaster_service_funcs
 
 app = Flask(__name__)
 
+
 # fixme : this does not give info about the actual exception
 @app.errorhandler(500)
 def error_handling(error):
